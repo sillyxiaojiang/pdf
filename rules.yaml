@@ -1,0 +1,31 @@
+version: "2.4.0"
+
+# 维度 A：业务类型判定 (自上而下匹配，命中即停止)
+biz_rules:
+  - target: "truck_mounted_knuckle"
+    pattern: "折臂.*随车|吨米"
+  - target: "truck_mounted_straight"
+    pattern: "直臂.*随车"
+  - target: "tower_crane_luffing"
+    pattern: "JTL\\d+"
+  - target: "tower_crane_topless"
+    pattern: "JTT\\d+"
+  - target: "tower_crane_hammerhead"
+    pattern: "QTZ\\d*|JT\\d+"
+  - target: "crawler_crane"
+    pattern: "XGC|QUY|SCC|ZCC"
+  - target: "mobile_truck_crane"
+    pattern: "XCA|XCT|QY|LTM|STC|SAC|ZAT|ZTC|ZRT"
+  - target: "forklift"
+    pattern: "FL\\d|EL\\d|H\\d{2}"
+
+# 维度 B：文档形态判定关键词
+doc_keywords:
+  spec_sheet: "性能表|起重特性|工况图|范围图|range diagram|load chart"
+  manual: "使用说明|操作手册|manual"
+  brochure: "画册|宣传册|brochure"
+
+# 质量门禁 (Quality Gate) 阈值
+quality_gate:
+  min_capacity_ton: 0.1
+  max_capacity_ton: 5000.0

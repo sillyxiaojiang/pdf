@@ -1,0 +1,10 @@
+dmPython
+pymupdf
+pydantic-settings
+PyYAML
+celery
+redis
+minio
+gradio_client
+openai
+huggingface_hub
